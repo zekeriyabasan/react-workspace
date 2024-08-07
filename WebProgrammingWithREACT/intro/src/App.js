@@ -4,6 +4,13 @@ import ProductList from "./ProductList";
 import {Container,Row,Col} from 'reactstrap'
 
 function App() {
+  const titleProduct = 'ÜRÜN LİSTESİ';
+
+  const categoryProps = {title : 'KATEGORİ LİSTESİ',
+    categories : ["BIÇAK","BEYAZ EŞYA","BİSİKLET"]
+
+  }
+
   return (
     <div>
       <Container>
@@ -11,8 +18,8 @@ function App() {
           <Navi />
         </Row>
         <Row>
-          <Col xs='3'><CategoryList titleProp = 'CATEGORİ LİSTESİ' /></Col>
-          <Col xs='3'><ProductList /></Col>
+          <Col xs='3'><CategoryList categoryProp ={categoryProps}/></Col>
+          <Col xs='3'><ProductList titleProp ={titleProduct} /></Col>
         </Row>
       </Container>
     </div>
