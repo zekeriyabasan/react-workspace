@@ -7,7 +7,10 @@ function App() {
   const titleProduct = 'ÜRÜN LİSTESİ';
 
   const categoryProps = {title : 'KATEGORİ LİSTESİ',
-    categories : ["BIÇAK","BEYAZ EŞYA","BİSİKLET"]
+    categories : [
+      {Id:1, name:"BIÇAK"},
+      {Id:2, name:"BEYAZ EŞYA"},
+      {Id:3, name:"BİSİKLET"}]
 
   }
 

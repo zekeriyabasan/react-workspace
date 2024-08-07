@@ -5,25 +5,23 @@ export default class CategoryList extends Component {
     /**
      *
      */
-    // constructor(props) {
-    //     super(props);
-    //     state:{}
+    constructor(props) {
+        super(props);
+        this.state = {categoriesAsState:this.props.categoryProp.categories}
         
-    // }
+    }
     render() {
         return (
             <div>
                 <h3>{this.props.categoryProp.title}</h3>
                 <ListGroup>
-                    <ListGroupItem>
-                    {this.props.categoryProp.categories[0]}
-                    </ListGroupItem>
-                    <ListGroupItem>
-                    {this.props.categoryProp.categories[1]}
-                    </ListGroupItem>
-                    <ListGroupItem>
-                    {this.props.categoryProp.categories[2]}
-                    </ListGroupItem>
+                    {
+                        this.state.categoriesAsState.map(category => (
+                            <ListGroupItem key={category.Id}>
+                                {category.name}
+                            </ListGroupItem>
+                        ))
+                    }
                 </ListGroup>
             </div>
         )
