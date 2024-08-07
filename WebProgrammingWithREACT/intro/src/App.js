@@ -11,7 +11,7 @@ function App() {
           <Navi />
         </Row>
         <Row>
-          <Col xs='3'><CategoryList /></Col>
+          <Col xs='3'><CategoryList titleProp = 'CATEGORİ LİSTESİ' /></Col>
           <Col xs='3'><ProductList /></Col>
         </Row>
       </Container>
