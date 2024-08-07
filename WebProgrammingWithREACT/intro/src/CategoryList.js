@@ -2,21 +2,13 @@ import React, { Component } from 'react'
 import {ListGroupItem,ListGroup} from 'reactstrap'
 
 export default class CategoryList extends Component {
-    /**
-     *
-     */
     constructor(props) {
         super(props);
         this.state = {
             categoriesAsState:this.props.categoryProp.categories,
-            currentCategoryId:0
-        }
-        
+        }      
     }
-    changeCategory = id => {
-        this.setState({currentCategoryId:id})
 
-    }
     render() {
         return (
             <div>
@@ -24,14 +16,14 @@ export default class CategoryList extends Component {
                 <ListGroup>
                     {
                         this.state.categoriesAsState.map(category => (
-                            <ListGroupItem onClick={()=> this.changeCategory(category.Id)} key={category.Id}>
+                            <ListGroupItem onClick={()=> this.props.changeCategory(category.Id)} key={category.Id}>
                                 {category.name}
                             </ListGroupItem>
                         ))
                     }
                     
                 </ListGroup>
-                <h3>{this.state.currentCategoryId}</h3>
+                <h3>{this.props.currentCategoryId}</h3>
             </div>
         )
     }
