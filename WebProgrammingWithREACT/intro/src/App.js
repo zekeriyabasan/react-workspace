@@ -37,7 +37,7 @@ componentDidMount(){
             <Navi />
           </Row>
           <Row>
-            <Col xs='3'><CategoryList changeCategory={this.changeCategory}  categoryProp ={this.categoryProps}/></Col>
+            <Col xs='3'><CategoryList changeCategory={this.changeCategory} id={this.state.category.id}  categoryProp ={this.categoryProps}/></Col>
             <Col xs='9'><ProductList category={this.state.category} products={this.state.products} titleProp ={this.titleProduct} /></Col>
           </Row>
         </Container>

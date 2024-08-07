@@ -22,8 +22,8 @@ export default class ProductList extends Component {
                   <th scope="row">{product.id}</th>
                   <td>{product.productName}</td>
                   <td>{product.unitPrice}</td>
-                  <td>@{product.quantityPerUnit}</td>
-                  <td>@{product.unitsInStock}</td>
+                  <td>{product.quantityPerUnit}</td>
+                  <td>{product.unitsInStock}</td>
                 </tr>
 
               ))
