@@ -6,22 +6,29 @@ import {Container,Row,Col} from 'reactstrap'
 import React, { Component } from 'react'
 
 export default class App extends Component {
-  state = {currentCategoryId:0}
+  state = {category:{},products:[]}
 
-  changeCategory = id => {
-    this.setState({currentCategoryId:id})
+  changeCategory = category => {
+    this.setState({category:category});
+    this.getProducts(category.id);
 
 }
+getProducts = (id)=>{
+  let urlp = "http://localhost:3000/products";
+  if(id){
+    urlp += "?categoryId=" + id
+  }
+  fetch(urlp)
+  .then(response=>response.json())
+  .then(data=>this.setState({products:data}))
+}
+componentDidMount(){
+  this.getProducts();
 
+}
   titleProduct = 'ÜRÜN LİSTESİ';
 
-  categoryProps = {title : 'KATEGORİ LİSTESİ',
-    categories : [
-      {Id:1, name:"BIÇAK"},
-      {Id:2, name:"BEYAZ EŞYA"},
-      {Id:3, name:"BİSİKLET"}]
-
-  }
+  categoryProps = {title : 'KATEGORİ LİSTESİ'}
   render() {
     return (
       <div>
@@ -30,8 +37,8 @@ export default class App extends Component {
             <Navi />
           </Row>
           <Row>
-            <Col xs='3'><CategoryList changeCategory={this.changeCategory} currentCategoryId={this.state.currentCategoryId} categoryProp ={this.categoryProps}/></Col>
-            <Col xs='3'><ProductList currentCategoryId={this.state.currentCategoryId} titleProp ={this.titleProduct} /></Col>
+            <Col xs='3'><CategoryList changeCategory={this.changeCategory}  categoryProp ={this.categoryProps}/></Col>
+            <Col xs='9'><ProductList category={this.state.category} products={this.state.products} titleProp ={this.titleProduct} /></Col>
           </Row>
         </Container>
       </div>
