@@ -22,6 +22,10 @@ export default class App extends Component {
     alert("Added Product to Cart")
 
   }
+  removeFromCart = (product) => {
+    const newCart = this.state.cart.filter(i=>i.product.id !== product.id);
+    this.setState({ cart: newCart });
+  }
 
   changeCategory = category => {
     this.setState({ category: category });
@@ -49,7 +53,7 @@ export default class App extends Component {
       <div>
 
         <Container>
-          <Navi cart = {this.state.cart} />
+          <Navi cart = {this.state.cart} removeFromCart = {this.removeFromCart} />
           <Row>
             <Col xs='3'><CategoryList changeCategory={this.changeCategory} id={this.state.category.id} categoryProp={this.categoryProps} /></Col>
             <Col xs='9'><ProductList 
