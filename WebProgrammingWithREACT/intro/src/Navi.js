@@ -6,8 +6,10 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink} from 'reactstrap';
+  NavLink
+} from 'reactstrap';
 import CartItem from "./CartItem";
+import { Link } from 'react-router-dom';
 
 export default class Navi extends React.Component {
   constructor(props) {
@@ -32,13 +34,13 @@ export default class Navi extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink><Link to="/form1">FORM - 1</Link></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink><Link to="/form2">FORM - 2</Link></NavLink>
               </NavItem>
-              <CartItem cart={this.props.cart} removeFromCart={this.props.removeFromCart}/>
-           
+              <CartItem cart={this.props.cart} removeFromCart={this.props.removeFromCart} />
+
             </Nav>
           </Collapse>
         </Navbar>
