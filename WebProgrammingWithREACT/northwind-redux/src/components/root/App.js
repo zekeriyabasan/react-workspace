@@ -1,10 +1,15 @@
-import logo from './logo.svg';
+import Dashboard from './Dashboard';
+import Navi from '../navi/Navi';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from 'reactstrap';
 
 function App() {
   return (
-    <div>
+    <Container>
+      <Navi />
+      <Dashboard />
 
-    </div>
+    </Container>
   );
 }
 
