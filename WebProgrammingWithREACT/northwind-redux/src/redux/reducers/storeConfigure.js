@@ -15,4 +15,4 @@ const storeConfigure = () => {
   });
 };
 
-export default storeConfi;
+export default storeConfigure;

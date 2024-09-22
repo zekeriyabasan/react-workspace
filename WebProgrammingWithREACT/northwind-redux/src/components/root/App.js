@@ -9,6 +9,7 @@ function App() {
       <Navi />
       <Dashboard />
 
+
     </Container>
   );
 }
