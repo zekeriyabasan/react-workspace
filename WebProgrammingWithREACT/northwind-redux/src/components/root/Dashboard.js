@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Col, Row } from 'reactstrap'
 import Categorylist from '../categories/CategoryList'
 import ProductList from '../products/ProductList'
-export default class Dashboard extends Component {
+
+ class Dashboard extends React.Component {
   render() {
     return (
       <div>
@@ -18,3 +19,4 @@ export default class Dashboard extends Component {
     )
   }
 }
+export default Dashboard
