@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import CartSummary from '../cart/CartSummary'
+
 import {
   Collapse,
   Navbar,
@@ -10,59 +12,42 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  NavbarText,
-} from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-class Navi extends Component {
+  DropdownItem } from 'reactstrap';
+
+ class Navi extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isOpen: false,
-    };
+
     this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
   }
-
   toggle() {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen,
-    }));
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
   }
-
   render() {
     return (
       <div>
-        <Navbar {...this.props}>
+        <Navbar color="light" light expand="md">
           <NavbarBrand href="/">reactstrap</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="me-auto" navbar>
+            <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/components/">Components</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  GitHub
-                </NavLink>
+                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              <CartSummary/>
             </Nav>
-            <NavbarText>Simple Text</NavbarText>
           </Collapse>
         </Navbar>
       </div>
     );
   }
 }
-
 export default Navi;

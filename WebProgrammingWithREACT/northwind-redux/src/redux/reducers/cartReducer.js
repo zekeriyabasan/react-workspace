@@ -20,6 +20,11 @@ function cartReducer(state=initialState.cart,action){
             else{
                 return [...state,{...action.payload}]
             }
+
+        case actionTypes.REMOVE_FROM_CART:
+            var editedCart = state.filter(i => i.product.id !== action.payload.id)
+            return editedCart;
+
         default:
             return state; // if no action return state
     }
