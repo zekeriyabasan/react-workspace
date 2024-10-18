@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as cartActions from '../../redux/actions/cartActions'
+import {Link} from 'react-router-dom'
+import alertify from 'alertifyjs'
 import {
     UncontrolledDropdown,
     DropdownToggle,
@@ -13,6 +15,12 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class CartSummary extends Component {
+    removeFromCart = (cartItem) => {
+        this.props.actions.removeFromCart(cartItem.product);
+        alertify.success(cartItem.product.productName + "sepetten çıkarıldı");
+    
+      }
+
     renderWhenEmptyCart() {
         return (
             <Badge>Sepetiniz Boş</Badge>
@@ -28,13 +36,13 @@ class CartSummary extends Component {
                     {this.props.cart.map(cartItem => (
                         <DropdownItem>{cartItem.product.productName}
                             <Badge>{cartItem.quantity}</Badge>
-                            <Badge onClick={()=>this.props.actions.removeFromCart(cartItem.product)} color='danger'> -</Badge>
+                            <Badge onClick={()=>this.removeFromCart(cartItem)} color='danger'> -</Badge>
                         </DropdownItem>
                     ))}
 
 
                     <DropdownItem divider />
-                    <DropdownItem>Temizle</DropdownItem>
+                    <DropdownItem><Link to={"/cart"}>Sepete Git</Link></DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>
         )
