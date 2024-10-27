@@ -5,6 +5,7 @@ import { Container } from 'reactstrap';
 import {Route,Routes} from 'react-router-dom'
 import ProductList from '../products/ProductList';
 import CartDetail from '../cart/CartDetail';
+import AddOrUpdateProduct from '../products/AddOrUpdateProduct';
 function App() {
   return (
     <Container>
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element = {<Dashboard/>}/>
         <Route path='/cart' element = {<CartDetail/>}/>
         <Route path='/products' element = {<ProductList/>}/>
+        <Route path='/saveproduct/:productId' element = {<AddOrUpdateProduct/>}/>
         
 
       </Routes>
