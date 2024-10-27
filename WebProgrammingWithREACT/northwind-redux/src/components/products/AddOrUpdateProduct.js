@@ -36,12 +36,33 @@ import {saveProduct} from '../../redux/actions/productActions'
         })
 
     }
+    return (
+        <div></div>
+    )
+}
+
+export function getProductById(products,id){
+    let product = products.find(product => product.id === productId) || null;
+    return product;
+
+}
+function mapStateToProps(state, ownProps){
+    const productId = ownProps.match.params.productId
+    const product = productId && state.productReducer.length>0 ?
+    getProductById(productId):{}
+
+    return {
+        product,
+        products : state.productReducer,
+        categories : state.categoryReducer
+    }
+
 }
 const mapDispatchToProps = {
     getCategories, saveProduct
 }
 
-export default connect(mapDispatchToProps)(AddOrUpdateProduct);
+export default connect(mapDispatchToProps,mapStateToProps)(AddOrUpdateProduct);
 
 
 
